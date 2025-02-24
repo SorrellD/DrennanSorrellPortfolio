@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drennan Sorrell</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"><style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #fff;
+      color: #000;
+      line-height: 1.6;
+      padding-top: 190px; /* Space for fixed header + nav */
+    }
+    a {
+      color: #D35400; /* deep orange accent */
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Fixed Header (Deep Orange) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #D35400;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      z-index: 1000;
+      height: 140px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    header .headshot {
+      display: flex;
+      align-items: center;
+    }
+    header .headshot img {
+      image-rendering: crisp-edges;      
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+      border: 2px solid #fff;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    header .tagline {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #fff;
+    }
+    
+    /* Fixed Navigation Bar (Dark Gray) */
+nav {
+  position: fixed;
+  top: 140px; /* directly below header */
+  left: 0;
+  width: 100%;
+  background: #34495E;
+  z-index: 999;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+  margin: 0;
+}
+nav ul li {
+  margin: 0 1rem;
+  position: relative;
+}
+nav ul li a {
+  font-weight: 500;
+  color: #fff;
+  padding: 0.5rem;
+  display: block;
+}
+
+/* Dropdown Menu */
+nav ul li .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #34495E;
+  min-width: 200px;
+  border: 1px solid #2C3E50;
+  z-index: 1000;
+}
+nav ul li:hover > .dropdown {
+  display: block;
+}
+nav ul li .dropdown li {
+  margin: 0;
+}
+nav ul li .dropdown li a {
+  padding: 0.5rem 1rem;
+}
+
+/* Nested Dropdown (Submenu) */
+.dropdown-submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: #34495E;
+  min-width: 200px;
+  border: 1px solid #2C3E50;
+  z-index: 1000;
+}
+nav ul li .dropdown li:hover > .dropdown-submenu {
+  display: block;
+}
+    
+    /* Main Content Area */
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    /* Ensure section headings are not hidden behind the fixed header */
+    .section-wrapper {
+      background: #F8F8F8;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      scroll-margin-top: 160px;
+    }
+    
+    /* Headings */
+    h2 {
+      color: #D35400;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #D35400;
+      padding-bottom: 0.3rem;
+    }
+    h3 {
+      color: #D35400;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Paragraphs & Emphasis */
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    strong {
+      font-weight: bold;
+    }
+    em {
+      font-style: italic;
+    }
+    
+    /* Lists */
+    ul {
+      list-style: disc inside;
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Content Box for Section Email/Text */
+    .content-box {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    /* Centered Image Helper Class */
+    .centered-img {
+      display: block;
+      margin: 1rem auto;
+      max-width: 200px;
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #34495E;
+      color: #fff;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* ------------------------------------------
+       PHOTO GALLERY RULES - Place them here!
+       Ensures all .photo-gallery images are uniform
+    ------------------------------------------ */
+    .photo-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .photo-gallery img {
+      width: 200px;      /* Adjust to desired size */
+      height: 150px;     /* Adjust to desired size */
+      object-fit: contain; /* Crops the image if necessary */
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+.engagement-poster {
+  display: block;
+  max-width: 400px;   
+margin: 1rem auto; /* centers the image, adds spacing */
+  height: auto;      /* keeps the aspect ratio */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body>
+  <!-- Fixed Header -->
+<header style="background: #D35400; padding: 1rem;">
+  <div class="headshot" style="display: flex; align-items: center;">
+    <img 
+      src="https://i.ibb.co/TDCb242P/Drennan-Sorrell0820-2.jpg" 
+      alt="Drennan-Sorrell0820-2" 
+      border="0" 
+      style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-right: 1rem; border: 2px solid #fff;"
+    >
+    <div style="color: #fff; line-height: 1.2;">
+      <h1 style="margin: 0.5rem 0 0.2rem 0; font-size: 1.8rem; font-weight: 700;">
+        Drennan Sorrell
+      </h1>
+      <p class="tagline" style="margin: 0 0 0.5rem 0; font-size: 1.2rem;">
+        Marketing and Writing Portfolio
+      </p>
+      <p class="contact-info" style="margin: 0; font-size: 0.95rem;">
+        <strong>LinkedIn:</strong> 
+        <a href="https://www.linkedin.com/in/drennan-sorrell/" target="_blank" style="color: #fff; text-decoration: none;">
+          linkedin.com/in/drennan-sorrell
+        </a> |
+        <strong>Email:</strong> 
+        <a href="mailto:drennansorrell@gmail.com" style="color: #fff; text-decoration: none;">
+          drennansorrell@gmail.com
+        </a> |
+        <strong>Phone:</strong> (772) 321-9272 |
+ <a href="https://drive.google.com/uc?export=download&id=1xLad7OzCr4Rvm9JDYyg9txTYn2IZgMB0" download style="color: #fff; text-decoration: none; display: inline-flex; align-items: center;">
+  Resume
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+</a>
+    </div>
+  </div>
+</header>
+  
+  <!-- Fixed Navigation Bar -->
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li>
+      <a href="#res-life">Residence Life</a>
+      <ul class="dropdown">
+        <li>
+          <a href="#housing-ops">Housing Operations</a>
+          <ul class="dropdown-submenu">
+            <li><a href="#troder-hall">New Residence Hall-Troder Hall</a></li>
+            <li><a href="#housing-selection">Housing Selection Announcement</a></li>
+            <li><a href="#housing-app-announcement">Housing Application Announcement</a></li>
+            <li><a href="#housing-for-coaches">Housing Process Overview for Coaches</a></li>
+            <li><a href="#housing-qa">Housing Selection Q&amp;A</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#recruitment">Recruitment</a>
+          <ul class="dropdown-submenu">
+            <li><a href="#ra-practical">Resident Assistant Practical Interview</a></li>
+            <li><a href="#ra-communications">Resident Assistant Position Communications</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#community-engagement">Community Engagement</a>
+          <ul class="dropdown-submenu">
+            <li><a href="#super-bowl">Super Bowl Watch Party!</a></li>
+            <li><a href="#crush-hunger">Crush Hunger Dorm Competition</a></li>
+            <li><a href="#pierson-spooktacular">The Pierson Spooktacular!</a></li>
+            <li><a href="#troder-kitchen-supplies">Troder Hall Community Kitchen Supplies</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#student-engagement">Student Engagement</a>
+      <ul class="dropdown">
+        <li><a href="#the-toilet-paper">The Toilet Paper</a></li>
+        <li><a href="#warrior-weekly">Warrior Weekly</a></li>
+        <li><a href="#gotcha-tag">Event: Gotcha Tag</a></li>
+        <li><a href="#sex-rules">Event: Sex Rules</a></li>
+      </ul>
+    </li>
+    <li><a href="#festival-marketing">Festival Marketing</a></li>
+    <li><a href="#educational-material">Educational Material</a></li>
+    <!-- Updated Photo Gallery Dropdown -->
+    <li>
+      <a href="#gallery">Gallery</a>
+      <ul class="dropdown">
+        <li><a href="#me">Me!</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#event-photos">Events</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<main>
+
+
+
+<body>
+  <div id="home"></div>
+  <!-- Rest of your content -->
+
+<!-- Landing Page Section -->
+<div class="landing-page" style="display: flex; flex-wrap: wrap; align-items: center; padding: 2rem; background: #F8F8F8;">
+  <!-- Left: Portrait Photo (Rectangular) -->
+  <div class="portrait" style="flex: 0 0 300px; text-align: center; margin: 1rem;">
+    <img src="https://i.ibb.co/WWQtrTr9/Drennan-Sorrell0820-1.jpg" 
+         alt="Drennan Sorrell Portrait" 
+         style="width: 300px; height: auto; border: 3px solid #D35400; border-radius: 6px;">
+  </div>
+  <!-- Right: Personal Sales Pitch -->
+  <div class="intro-text" style="flex: 1; padding: 1rem; margin: 1rem;">
+    <h1 style="color: #D35400; font-size: 2.5rem; margin-bottom: 0.5rem;">Hi, I'm Drennan Sorrell</h1>
+    <p style="font-size: 1.2rem; line-height: 1.5; margin-bottom: 0.5rem;">
+      I drive growth and elevate customer experiences through innovative marketing and strategic leadership. With an MBA and a proven track record in transforming brands, I turn ideas into impactful actions.
+    </p>
+<p style="font-style: italic; color: #555; margin-top: 1.5rem;">
+  <a href="https://www.youtube.com/watch?v=5BsrFl0yoQA&t=2529" target="_blank" style="color: inherit; text-decoration: none;">
+    "A vision is key to future success.If you can see it, you can be it!"
+  </a>
+</p>  </div>
+</div>
+
+<!-- Explore My Work Section -->
+<div class="explore-work" style="text-align: center; padding: 2rem; background: #fff;">
+  <h2 style="color: #D35400; margin-bottom: 1.5rem;">Explore My Work</h2>
+  <div class="work-icons" style="display: flex; justify-content: space-evenly; align-items: center; flex-wrap: nowrap; gap: 1rem;">
+    <!-- Residence Life App Square -->
+    <a href="#res-life" style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      background: #F8F8F8;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #000;
+      padding: 0.5rem;
+    ">
+      <img src="https://i.ibb.co/JjVBvVLW/Res-Life-Logo-Black-png.png" alt="Residence Life" style="max-width: 80px; margin-bottom: 0.5rem;">
+      <span style="font-size: 1rem; font-weight: bold;">Residence Life</span>
+    </a>
+    <!-- Student Engagement App Square -->
+    <a href="#student-engagement" style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      background: #F8F8F8;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #000;
+      padding: 0.5rem;
+    ">
+      <img src="https://i.ibb.co/wZxJkFVg/OSE-with-IT-logo.png" alt="Student Engagement" style="max-width: 80px; margin-bottom: 0.5rem;">
+      <span style="font-size: 1rem; font-weight: bold;">Student Engagement</span>
+    </a>
+    <!-- Festival Marketing App Square -->
+    <a href="#festival-marketing" style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      background: #F8F8F8;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #000;
+      padding: 0.5rem;
+    ">
+      <img src="https://i.ibb.co/ZpKWtfcy/Keystone-Logo.png" alt="Festival Marketing" style="max-width: 80px; margin-bottom: 0.5rem;">
+      <span style="font-size: 1rem; font-weight: bold;">Festival Marketing</span>
+    </a>
+    <!-- Educational Material App Square -->
+    <a href="#educational-material" style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      background: #F8F8F8;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #000;
+      padding: 0.5rem;
+    ">
+      <img src="https://i.ibb.co/vC8TbJw7/ITSeal.jpg" alt="Educational Material" style="max-width: 80px; margin-bottom: 0.5rem;">
+      <span style="font-size: 1rem; font-weight: bold;">Educational Material</span>
+    </a>
+    <!-- Photo Gallery App Square -->
+    <a href="#gallery" style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      background: #F8F8F8;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #000;
+      padding: 0.5rem;
+    ">
+      <img src="https://i.ibb.co/6ctT6810/Camera-Icon.jpg" alt="Gallery" style="max-width: 80px; margin-bottom: 0.5rem;">
+      <span style="font-size: 1rem; font-weight: bold;">Gallery</span>
+    </a>
+  </div>
+</div>    <!-- Overall Residence Life Heading -->
+    <div class="section-wrapper" id="res-life">
+      <h2>Residence Life</h2>
+      <p>
+        Included are several projects and communications I've overseen in my roles within Residence Life, ranging from new building development to 
+        community engagement initiatives.
+      </p>
+      <img src="https://i.ibb.co/JjVBvVLW/Res-Life-Logo-Black-png.png" alt="Res-Life-Logo-Black-png" style="display: block; margin: 0 auto;">
+
+    </div>
+    
+  <!-- Housing Operations Overview Section -->
+<div class="section-wrapper" id="housing-ops">
+  <h2>Housing Operations</h2>
+  <div class="content-box">
+    <p>
+      Housing Operations encompasses all the logistical functions essential to running the University Housing,
+      including student placements, Move-In, Move-Out, key management, application deadlines, and dorm upkeep. This overview 
+      highlights the strategies and day-to-day operations that ensure the seamless functioning of our 
+      residential community.
+    </p>
+ <!-- Insert clickable image for Pierson Move Out -->
+    <p style="text-align: center; margin-top: 1rem;">
+      <a href="https://i.ibb.co/7dQZVjmZ/Pierson-Move-Out.png" target="_blank">
+        <img 
+          src="https://i.ibb.co/7dQZVjmZ/Pierson-Move-Out.png" 
+          alt="Pierson Move Out" 
+          style="max-width: 500px; width: 100%; border: 1px solid #ddd; border-radius: 4px;"
+        >
+      </a>
+
+  </div>
+</div>
+      
+      <!-- Now, the specific project: New Residence Hall – Troder Hall -->
+<div class="section-wrapper" id="troder-hall">
+      <h2>New Residence Hall – Troder Hall</h2>
+      
+      <!-- BACKGROUND INFO -->
+      <p>
+        <strong>Project Background:</strong> I worked closely with architects at Design Collaborative to help
+        shape Troder Hall's overall layout, furniture selection, room orientation, and lobby spaces. My role 
+        involved coordinating with multiple stakeholders to ensure the building stayed on schedule for its 
+        Fall 2024 opening.
+      </p>
+      
+      <div class="content-box">
+        <p><strong>Subject:</strong> Exciting News! Troder Hall is Coming Fall 2024</p>
+        
+        <p>Hello Warriors,</p>
+        
+        <p>
+          We are thrilled to announce the latest addition to our campus community. 
+          <strong>Troder Hall</strong> is set to open doors for you in Fall 2024! Yes, you could live in 
+          Troder Hall as soon as next semester!
+        </p>
+        
+ <!-- Insert clickable image #1 before "What Makes Troder Hall Special?" -->
+    <a href="https://i.ibb.co/twq86XTm/Troder-Hall-Outside-Render.png" target="_blank">
+      <img 
+        src="https://i.ibb.co/twq86XTm/Troder-Hall-Outside-Render.png" 
+        alt="Troder Hall Outside Render" 
+        style="display: block; margin: 1rem auto; max-width: 800px; width: 100%; border: 1px solid #ddd; border-radius: 4px;"
+      >
+    </a>
+
+        <h3>What Makes Troder Hall Special?</h3>
+        <p>
+          Troder Hall is inspired by the much-loved Summit Hall design but featuring four floors and 
+          <strong>120 single beds</strong> in a layout that emphasizes privacy while fostering community. 
+          Each suite features two individual dorm rooms connected by a shared bathroom, providing the perfect 
+          blend of personal space and communal living. Whether you're an early bird, a night owl, or somewhere 
+          in between, Troder Hall is designed with your comfort, privacy, and community in mind.
+        </p>
+        
+        <h3>How Can I Live in Troder Hall?</h3>
+        <p>
+          Troder Hall can be selected during this year's <strong>Room Selection</strong> process! Like Summit Hall, 
+          Troder Hall cannot be selected until <strong>Individual Room Selection</strong> starts on <strong>April 17th</strong>. 
+          To put yourself in the best position to live in Troder Hall, complete the 
+          <strong>Returning Student Housing Application</strong> and register for 
+          <strong>Fall 2024</strong> classes!
+        </p>
+        
+        <h3>Where Can I Learn More?</h3>
+        <p>
+          Over the next two weeks, we will release more information about Troder Hall!
+        </p>
+        <ul>
+          <li>
+            Follow us on Instagram <strong>@indianatechresidencelife</strong>; this and next week, 
+            you'll see renderings and more sneak peeks of the current project!
+          </li>
+          <li>
+            Log into the <strong>Housing Portal</strong> and look under <em>"Helpful Links"</em>—we have provided 
+            the floor plans for all dorms, and Troder Hall is coming soon!
+          </li>
+        </ul>
+        
+<h3>Sneak Peaks</h3>
+<!-- Insert "Sneak Peeks" line and clickable images #2, #3, and #4 -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 1rem;">
+      <a href="https://i.ibb.co/LDVmq6kc/Troder-Hall-Lobby-Render.png" target="_blank">
+        <img 
+          src="https://i.ibb.co/LDVmq6kc/Troder-Hall-Lobby-Render.png" 
+          alt="Troder Hall Lobby Render" 
+          style="max-width: 600px; width: 100%; border: 1px solid #ddd; border-radius: 4px;"
+        >
+      </a>
+      <a href="https://i.ibb.co/KzW0XfJc/Troder-Hall-Room-Render.png" target="_blank">
+        <img 
+          src="https://i.ibb.co/KzW0XfJc/Troder-Hall-Room-Render.png" 
+          alt="Troder Hall Room Render" 
+          style="max-width: 600px; width: 100%; border: 1px solid #ddd; border-radius: 4px;"
+        >
+      </a>
+      <a href="https://i.ibb.co/v7SpByf/Troder-Hall-Inside-Furn-Render.png" target="_blank">
+        <img 
+          src="https://i.ibb.co/v7SpByf/Troder-Hall-Inside-Furn-Render.png" 
+          alt="Troder Hall Inside Furn Render" 
+          style="max-width: 600px; width: 100%; border: 1px solid #ddd; border-radius: 4px;"
+        >
+      </a>
+    </div>
+
+        <p>
+          Please feel welcome to reach out to 
+          <a href="mailto:residencelife@indianatechresidencelife.edu">residencelife@indianatechresidencelife.edu</a> 
+          with any questions!
+        </p>
+        
+        <p>Thank You,<br>Drennan Sorrell</p>
+      </div>
+    </div>
+<!-- Housing Selection Announcement Section -->
+<div class="section-wrapper" id="housing-selection">
+  <h2>Housing Selection Announcement</h2>
+  <div class="content-box">
+    <p><strong>Subject:</strong> Read Carefully: Housing Selection Is Almost Here!</p>
+    
+    <p>Hello Warriors,</p>
+    
+    <p>
+      It's almost time to select your housing for Fall 2024! Please take a look at the information below 
+      to stay updated with the current and future steps in the process.
+    </p>
+    
+    <h3>Step 1: Housing Application</h3>
+    <p>
+      Have you completed your Returning Student Housing Application? If yes, great job! You've completed the 
+      first step in selecting housing for next year!
+    </p>
+    <p><strong>How do I Complete the Housing Application?</strong></p>
+    <p>
+      1. Log in to Let Me In<br>
+      2. Go to One-Click-Apps<br>
+      3. Locate and open the Housing Portal<br>
+      4. On the Home Page, select “Applications.”<br>
+      5. Select and complete the “Returning Student Housing Application.”
+    </p>
+    
+    <h3>Step 2: Fall 2024 Registration</h3>
+    <p>
+      Are you registered for classes for Fall 2024? If yes, great job! You've completed the second step 
+      in selecting housing for next year! Both of the above steps MUST be completed to participate in 
+      Roommate Selection or Room Selection. Residents who are not registered for Fall 2024 will not receive housing.
+    </p>
+    
+    <h3>Step 3: Roommate Selection</h3>
+    <p>
+      Want to ensure you're living with friends or someone you'll get along with? Great! Residents who form 
+      roommate groups are prioritized in room selection; groups pick before individuals.
+    </p>
+    <p><strong>Roommate Selection Opens Monday, April 1st @ 10:00 A.M. Here's How It Works:</strong></p>
+    <p>
+      1. <strong>Login:</strong> Use Indiana Tech's LetMeIn and access One-Click-Apps to select the Housing Portal.<br>
+      2. <strong>Complete the Optional Application:</strong> Visit the "Roommate Matching Form" under "Applications" 
+         in the housing portal. Although the questions are optional, we encourage you to complete all sections to 
+         enhance your chances of finding a perfect match.<br>
+      3. <strong>Complete Your Roommate Profile:</strong> Update your contact information under the 
+         "Personal Information" tab!
+    </p>
+    <ul>
+      <li>"My Info" is kept private. We ask for details such as your mobile carrier and phone number.</li>
+      <li>Addresses and Emergency Contacts are also kept private. We highly recommend completing these sections.</li>
+      <li>
+        The "Roommate Profile" allows you to choose if you want to display certain information to potential roommates, 
+        such as primary contact preferences (e.g., Instagram, Snapchat) and additional details in "My Profile."
+      </li>
+    </ul>
+    <p>
+      4. <strong>Search and Select a Roommate:</strong> Head to the "Rooms and Roommates" tab and go to 
+         "Select Roommates." Ensure "For the Term:" is set to Fall 2024. Here, you can search for other students 
+         using your roommate matching form details and view profiles that match your preferences. If someone 
+         catches your eye, their preferred contact information may be visible so you can connect. Requesting a 
+         roommate will send them an email; you can also poke or email for an update.
+    </p>
+    <p><strong>IMPORTANT:</strong> To form a roommate group, EVERYONE must request and accept one another! The 
+    maximum roommate group size is six residents!</p>
+    <p>
+      5. <strong>Accepting Roommate Requests:</strong> Any requests you send or receive can be found under the 
+         "Rooms and Roommates" tab. You have complete control over your roommate selection for Fall 2024.
+    </p>
+    
+    <p>
+      <strong>Seeking Gender Neutral Housing?</strong><br>
+      Residence Life supports gender-neutral housing! If you'd like to form a roommate group with individual(s) 
+      of a different gender, please reach out to <a href="mailto:DMSorrell@indianatech.edu">DMSorrell@indianatech.edu</a> 
+      for additional details.
+    </p>
+    
+    <h3>Step 4: Room Selection</h3>
+    <p><strong>Group Selection Opens April 15th and Closes April 16th</strong></p>
+    <ul>
+      <li>Group Selection is for residents who form roommate groups!</li>
+      <li>
+        Groups will be prioritized based on their average cumulative credit hours completed (all credits 
+        completed up to the end of Fall 2023).
+      </li>
+      <li>
+        Groups that can fill an entire suite are given priority. 
+        (If your group cannot fill an entire suite, e.g., WRA Apt B or Rogers Apt 1C, 
+        you cannot start selecting until a designated time on April 15th, time TBD.)
+      </li>
+      <li>
+        A new group can start selecting every 2 minutes after room selection opens; 
+        only one member needs to log in to place the entire group.
+      </li>
+      <li>Summit and Troder Hall are unavailable during Group Selection.</li>
+      <li>Groups that form but do not select a room will be disbanded and added to individual selection.</li>
+    </ul>
+    
+    <p><strong>Individual Selection Opens April 17th and Closes April 19th</strong></p>
+    <ul>
+      <li>Individual Selection is for residents not in a roommate group!</li>
+      <li>
+        Individuals will be prioritized based on total credit hours completed 
+        (all credits completed up to the end of Fall 2023).
+      </li>
+      <li>A new individual can start selecting every 1–2 minutes after room selection opens.</li>
+      <li>All available upperclassman beds on campus can be selected!</li>
+    </ul>
+    
+    <h3>Where Can I Learn More?</h3>
+    <p>
+      Over the next two weeks, we will release more information about Housing Selection!
+    </p>
+    <ul>
+      <li>
+        Follow us on Instagram <strong>@indianatechresidencelife</strong>; soon you'll see 
+        video tutorials and infographics on selecting successfully!
+      </li>
+      <li>
+        Log into the Housing Portal, under "Helpful Links," where we've provided 
+        the floor plans for buildings!
+      </li>
+      <li>Keep an eye on your Indiana Tech email for more updates!</li>
+      <li>
+        Check out our website for a dedicated page on Housing Selection and upcoming updates!
+      </li>
+    </ul>
+        
+    <p>
+      <strong>Not Returning to Housing?</strong><br>
+      Ensure you get your Housing Deposit refunded! Log into the Housing Portal and, under Applications, 
+      find the "Intending NOT to Return" form. Complete this form if you're unsure, graduating, withdrawing, 
+      or requesting release. This form is necessary for your deposit refund, assuming all other requirements 
+      are met and your room is in satisfactory condition upon departure.
+    </p>
+    
+    <p>
+      If you plan to continue your education at Indiana Tech but do not intend to return to the residence halls, 
+      you must also complete the Housing Exemption/Cancellation Form to continue your enrollment.
+    </p>
+    
+    <p>
+      <strong>Questions?</strong><br>
+      We're happy to help! Please reach out to <a href="mailto:residencelife@indianatech.edu">residencelife@indianatech.edu</a> 
+      if you have any questions.
+    </p>
+    
+    <p>Thank You,<br>Drennan Sorrell</p>
+  </div>
+</div>
+<!-- Housing Application Announcement Section -->
+<div class="section-wrapper" id="housing-app-announcement">
+  <h2>Housing Application Announcement</h2>
+  <div class="content-box">
+    <p>Good Afternoon Warriors,</p>
+    
+    <p>
+      The Returning Student Housing Application for the 2024-2025 academic year is now live! 
+      You can access this form by taking the following steps:
+    </p>
+    
+    <p>
+      1. Log into <strong>LetMeIn</strong>.<br>
+      2. Locate your <strong>One-Click-Apps</strong>.<br>
+      3. Open the <strong>Housing Portal</strong>.<br>
+      4. Click the 3 Lines and select <strong>“Applications.”</strong><br>
+      5. Open and complete <strong>“Returning Student Housing Application Fall 2024.”</strong>
+    </p>
+    
+    <p>
+      You must complete the <strong>Returning Student Housing Application</strong> to live on campus next academic year. 
+      Indiana Tech has a 2-year residence requirement unless you meet one of our 
+      <a href="https://housing.indianatech.edu/forms/housing-exemption-cancelation-form/" target="_blank">
+        <strong>Housing Exemption and Release Form</strong>
+      </a> 
+      standards.
+
+    </p>
+    
+    <p>
+      If you are not returning for housing in the 2024-2025 academic year, please fill out the form titled 
+      <strong>“Intending not to Return for Fall 2024,”</strong> which can also be found under 
+      <strong>“Applications”</strong> in the <strong>Housing Portal</strong>. You must complete this form to receive your 
+      housing deposit back. Notification of your intention not to return to campus housing must be received by 
+      <strong>May 1st</strong> to be eligible for the return of your housing deposit.
+    </p>
+    
+    <p>
+      Housing Selection will take place in <strong>April</strong>. The Summer Housing Application will also go live in April. 
+      More information and specific dates will be emailed during <strong>Fall Registration</strong>. All residents must be 
+      registered for classes in order to participate in the <strong>Housing Selection Process</strong>. 
+
+<p>For a sneak peek at 
+      Housing Selection Process Dates, complete your Returning Student Housing Application <strong> NOW! </strong>
+    </p>
+    
+    <p>Thank You,<br>Drennan Sorrell</p>
+  </div>
+</div>
+<!-- Housing Process Overview for Coaches Section -->
+<div class="section-wrapper" id="housing-for-coaches">
+  <h2>Housing Process Overview for Coaches</h2>
+  <div class="content-box">
+    <p><strong>Subject:</strong> Housing Information for Athletics</p>
+    
+   
+      <strong>Returning Student Housing Application</strong><br>
+      2/19/24 &nbsp;&nbsp; Application Goes Live
+    </p>
+    <p>
+      <strong>Returning Housing Selection</strong><br>
+      4/01/24 – 04/12/24 &nbsp;&nbsp; Returning Student Roommate Selection<br>
+      4/15/24 &nbsp;&nbsp; Group Selection Goes Live<br>
+      4/17/24 &nbsp;&nbsp; Individual Selection Goes Live
+    </p>
+    <p>
+      <strong>New Student Housing Placement</strong><br>
+      03/20/24 – 06/01/24 &nbsp;&nbsp; New Student Roommate Selection<br>
+      06/12/24 &nbsp;&nbsp; New Student Placement
+    </p>
+    
+    <h3>Housing Selection Summary</h3>
+    <p>
+      Returning Student Housing Selection will take place the week of April 15th. Like last year, the housing selection will be 
+      broken into two processes. To participate in the Housing Selection process, students must complete the 
+      <strong>Returning Student Housing Application</strong> and be registered for classes for the Fall 2024 semester.
+    </p>
+    <p>
+      On April 1st, students who have registered for classes and completed the application can start creating roommate groups 
+      in the housing portal. The maximum group size is 6. Students will be able to search for one another or the qualities of 
+      students they prefer. Everyone in a group must confirm one another to become a complete group. For example, Sarah and Lee 
+      are a matched group, Olivia wants to join the group, Olivia must request BOTH Sarah and Lee, and BOTH Sarah and Lee have 
+      to accept Olivia's request. This same process will be available for incoming new students! A confirmed roommate group 
+      will override a coach's pairing request.
+    </p>
+    <p>
+      April 15th will kick off group selection; students who use the housing portal to form a roommate group will select first. 
+      Group selection priority will be based on the group's average total credit hours completed. Only one group member should 
+      log in at the selecting time to select placement for the entire group. Roommate groups must fill the entire desired suite 
+      to select it. Summit and Troder (new) Halls will be unavailable to select during group selection.
+    </p>
+    <p>
+      Individual selection will take place following group selection. Students who did not form a group can select in order 
+      based on total credit hours completed. Summit and Troder Halls will be available for selection.
+    </p>
+    <p>
+      Those who miss housing selection must communicate with Residence Life Staff; they will be manually placed into housing 
+      or given a makeup selection date.
+    </p>
+    
+    <h3>Our Needs From Athletics</h3>
+    <p>
+      05/01/2024 &nbsp;&nbsp; Warrior Scholar Room Placements Due<br>
+      05/08/2024 &nbsp;&nbsp; List of Athletes Staying After Residence Halls Close Due<br>
+      06/01/2024 &nbsp;&nbsp; New Student Room Pairing Requests Due
+    </p>
+    
+    <h3>Residence Hall Closing</h3>
+    <p>
+      2/19/24 – 5/10/24 &nbsp;&nbsp; Intending Not to Return<br>
+      4/10/24 – 5/10/24 &nbsp;&nbsp; Summer Housing Application<br>
+      5/10/24 &nbsp;&nbsp; Housing Closes (excludes active athletics and graduating seniors)
+    </p>
+    
+    <p><strong>Thank You,<br>Drennan Sorrell</strong></p>
+  </div>
+</div>
+
+
+<!-- Housing Selection Q&A Section -->
+<div class="section-wrapper" id="housing-qa">
+  <h2>Housing Selection Q&A</h2>
+  <div class="content-box">
+    <p><strong>Subject:</strong> Ask Us About Housing Selection Tomorrow at Lunch!</p>
+    
+    <p>Good Evening Warriors,</p>
+    
+    <p>
+      Do you have questions about selecting your room for next year? You aren't alone!
+    </p>
+    
+    <p>
+      Tomorrow, from 11:00 AM to 1:00 PM, you can find Residence Life Staff in the Cafeteria with 
+      information that will help walk you through the room selection process next week. 
+      No question is a bad question!
+    </p>
+    
+    <p><strong>Dates and Deadlines</strong></p>
+    <ul>
+      <li>The deadline to form a roommate group is tomorrow, April 12th, at 4:30 PM. We might extend this :) stay tuned.</li>
+      <li>Residents who form roommate groups can start selecting on Monday, April 15th at 9:00 AM (Summit and Troder Closed).</li>
+      <li>Residents who don't form roommate groups or don't select as a group can start on Wednesday, April 17th at 9:00 AM (All Dorms Open).</li>
+    </ul>
+    
+    <p><strong>Reminders</strong></p>
+    <ul>
+      <li>Residents must complete the "Returning Student Housing Application" and be registered for Fall 2024 classes to select or be placed into housing.</li>
+      <li>Room selection priority (when you get to select) is based on total completed credit hours (highest to lowest).</li>
+      <li>If you are not returning to housing (yes, even if you are graduating, transferring, or withdrawing), you must complete the "Intending NOT to Return" form.</li>
+    </ul>
+    
+    <p>
+      Can't make it to the Cafe in time? No worries! Reply to this email or contact 
+      <a href="mailto:residencelife@indianatech.edu">residencelife@indianatech.edu</a> 
+      for any of your questions!
+    </p>
+    
+    <p>Thank You,<br>Drennan Sorrell</p>
+
+<p style="text-align: center; margin-top: 1rem;">
+  <a href="https://i.ibb.co/BHwVBfdg/Got-Housing.png" target="_blank">
+    <img src="https://i.ibb.co/BHwVBfdg/Got-Housing.png" alt="Got Housing" style="max-width: 600px; width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+  </a>
+</p>  
+
+</div>
+</div>
+
+<!-- Recruitment Overview Section -->
+<div class="section-wrapper" id="recruitment">
+  <h2>Recruitment</h2>
+  <div class="content-box">
+    <p>
+      In the Recruitment area, I developed strategies and materials to attract and select top talent for our Residence Life team.
+      My responsibilities included creating and hosting practical interviews, drafting and sending candidate decision emails, and managing full-time 
+      staff recruitment campaigns. This overview highlights the initiatives designed to enhance our recruitment process and develop a strong, cohesive team.
+    </p>
+
+    <!-- 1) "Join-Res-Life-Today" at the top, centered -->
+    <p style="text-align: center; margin-top: 1rem;">
+      <a href="https://i.ibb.co/X657wck/Join-Res-Life-Today.png" target="_blank" style="display: inline-block; margin-bottom: 1rem;">
+        <img 
+          src="https://i.ibb.co/X657wck/Join-Res-Life-Today.png" 
+          alt="Join-Res-Life-Today" 
+          style="display: block; margin: 0 auto; max-width: 100%; border: 1px solid #ddd; border-radius: 4px;"
+        >
+      </a>
+    </p>
+
+    <!-- 2) Three Images in a Single Row (Responsive Grid) -->
+    <div 
+      style="
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+        gap: 1rem; 
+        justify-items: center; 
+        margin-top: 1rem;
+      "
+    >
+      <!-- Wanted to be an RA (RA Info Session) -->
+      <a 
+        href="https://i.ibb.co/gLXKFCp5/RA-Info-Session-Instagram-Post.png" 
+        target="_blank"
+        style="width: 100%; max-width: 350px;"
+      >
+        <img 
+          src="https://i.ibb.co/gLXKFCp5/RA-Info-Session-Instagram-Post.png" 
+          alt="Wanted to be an RA" 
+          style="width: 100%; border: 1px solid #ddd; border-radius: 4px;"
+        >
+      </a>
+
+      <!-- Join Our Team ACRL (New 4th Image) -->
+      <a 
+        href="https://i.ibb.co/7dF9yw8r/Join-Our-Team-ACRL.png" 
+        target="_blank"
+        style="width: 100%; max-width: 350px;"
+      >
+        <img 
+          src="https://i.ibb.co/7dF9yw8r/Join-Our-Team-ACRL.png" 
+          alt="Join-Our-Team-ACRL" 
+          style="width: 100%; border: 1px solid #ddd; border-radius: 4px;"
+        >
+      </a>
+
+      <!-- Become a Warrior (ACRL Infographic) -->
+      <a 
+        href="https://i.ibb.co/p63nFndH/ACRL-Infographic-1.png" 
+        target="_blank"
+        style="width: 100%; max-width: 350px;"
+      >
+        <img 
+          src="https://i.ibb.co/p63nFndH/ACRL-Infographic-1.png" 
+          alt="Become a Warrior" 
+          style="width: 100%; border: 1px solid #ddd; border-radius: 4px;"
+        >
+      </a>
+    </div>
+  </div>
+</div>
+<!-- Resident Assistant Practical Interview Section -->
+<div class="section-wrapper" id="ra-practical">
+  <h2>Resident Assistant Practical Interview</h2>
+  
+  <!-- Project Background (Outside the white box) -->
+  <p><strong>Project Background:</strong> Each year, approximately 100 students apply for the Resident Assistant position. Candidates complete two rounds of interviews: 
+    the first is an initial interview to get to know the candidate and assess their understanding of the role, and the second is a practical paired assessment 
+    where candidates work together on scenarios relevant to the RA position. Current RAs also participate in these interviews. Additionally, 
+    to be considered for the RA position, candidates must attend an RA information session, complete an application, submit a resume, provide two letters 
+    of recommendation, and participate in both interview rounds.
+  </p>
+  
+  <!-- Main content in the white box -->
+  <div class="content-box">
+    <p><strong>Resident Assistant Practical Interview Script and Scenarios</strong></p>
+    
+    <p>Full Name Printed: ___________________________________________</p>
+    
+    <p>
+      Welcome to the second round of interviews for the RA position! This round is a practical assessment 
+      where we will observe your ability to interact with each other and perform tasks relevant to the position.
+    </p>
+    
+    <p>
+      This assessment aims to gauge your interpersonal skills, teamwork, and understanding of the responsibilities 
+      and expectations of the RA role. We will begin by having you introduce yourselves and share a brief overview 
+      of your background and experience. Then, we will present you with a series of scenarios and tasks to complete together.
+    </p>
+    
+    <p>
+      Please remember that there are no right or wrong answers for these assessments. Handle each situation 
+      to the best of your ability, communicate effectively, and take the initiative.
+    </p>
+    
+    <p><strong>Is there anything you would like to clarify before we begin?</strong></p>
+    
+    <hr style="margin: 2rem 0;">
+    
+    <p><strong>Scenario 1:</strong> You have been informed that there is a conflict between two roommates on your floor: one international and one domestic student. 
+      The issue centers on differences in expectations regarding room cleanliness and odor. One of the residents has emailed your supervisor to complain, 
+      stating that the disagreement has created a tense atmosphere in the room. Your task is to mediate this conflict and find a resolution that respects 
+      both parties' comfort and living preferences.</p>
+    
+    <p><strong>Tasks:</strong></p>
+    <p>
+      1. Discuss and devise a strategy for mediating the conflict effectively, ensuring both parties feel heard and respected.<br>
+      2. Role-play or outline how you and your Co-RA would facilitate a mediation meeting between the two students, addressing their concerns and suggesting compromises.<br>
+      3. Determine potential follow-up actions to monitor the situation and ensure that the agreed-upon resolutions are implemented and sustained.
+    </p>
+    
+    <hr style="margin: 2rem 0;">
+    
+    <p><strong>Scenario 2:</strong> Recently, there have been numerous roommate disputes and general policy violations on your floor, and residents don't seem to be 
+      enjoying their living environment. Your supervisor has recommended that you plan and execute an event to foster community building and unity among residents.</p>
+    
+    <p><strong>Tasks:</strong></p>
+    <p>
+      1. Brainstorm ideas for the event, taking into account the interests and preferences of your residents.<br>
+      2. Develop a detailed plan for the event, including the theme, location, activities, and budget.<br>
+      3. Role-play or outline how you would approach and communicate with residents to gather feedback and encourage participation.<br>
+      4. Identify potential challenges and create contingency plans for the event.<br>
+      5. Present your event plan along with any funding requirements.
+    </p>
+    
+    <hr style="margin: 2rem 0;">
+    
+    <p><strong>Scenario 3:</strong> One of the residents, a first-year student, is struggling academically and emotionally. The student has approached you for support, 
+      and you want to help them succeed.</p>
+    
+    <p><strong>Tasks:</strong></p>
+    <p>
+      1. Brainstorm ways to support the student, considering their specific needs and challenges.<br>
+      2. Develop a plan of action for assisting the student, including identifying relevant resources and coordinating with other professionals if needed.<br>
+      3. Role-play or outline how you would approach and communicate with the student to offer support and encouragement.<br>
+      4. Discuss potential challenges and contingency plans for providing long-term support to the student.
+    </p>
+    
+  </div>
+</div>
+
+<!-- Resident Assistant Position Communications -->
+<div class="section-wrapper" id="ra-communications">
+  <h2>Resident Assistant Position Communications</h2>
+  
+  <!-- Invitation to Round 1 -->
+  <div class="content-box">
+    <h3>Invitation to First Interview</h3>
+    <p><strong>Subject:</strong> Resident Assistant Interview Signup Now Available</p>
+    <p><strong>Good Morning,</strong></p>
+    <p>
+      You have completed all the necessary steps to be considered for the Resident Assistant Position! 
+      RA Interview Signup is now available! Interviews will be held starting Thursday, January 25th 
+      through Wednesday, January 31st. Please select an interview time using the Bookings link below. 
+      If none of the available times are free in your schedule, please respond to this email or contact 
+      <a href="mailto:residencelife@indianatech.edu">residencelife@indianatech.edu</a>.
+    </p>
+  </div>
+  
+  <!-- Not Moving Forward for Second Interview -->
+  <div class="content-box">
+    <h3>Not Moving Forward to Second Interview</h3>
+    <p><strong>Subject:</strong> Resident Assistant Position Update</p>
+    <p><strong>Good Morning,</strong></p>
+    <p>
+      Thank you for your interest in the Resident Assistant (RA) position at Indiana Tech. We sincerely 
+      appreciate the time and effort you dedicated to the application process.
+    </p>
+    <p>
+      After careful consideration of your application, we have decided not to move forward with your 
+      candidacy to the next round of interviews. This decision was challenging due to the number of 
+      strong applicants, including both new candidates and returning staff members, competing for a 
+      limited number of positions.
+    </p>
+    <p>
+      We encourage you to explore other leadership opportunities at Indiana Tech. Many of these roles, 
+      even in a volunteer capacity, offer valuable experiences and help foster meaningful connections 
+      within the campus community.
+    </p>
+    <p>
+      Thank you again for your interest in the RA role. We wish you the very best in your academic and 
+      leadership pursuits at Indiana Tech.
+    </p>
+  </div>
+  
+  <!-- Moving Forward To Second Interview -->
+  <div class="content-box">
+    <h3>Moving Forward to Second Interview</h3>
+    <p><strong>Subject:</strong> Next Steps for the Resident Assistant Position</p>
+    <p><strong>Good Morning,</strong></p>
+    <p>
+      We would like to meet with you again! Attached to this email is a signup link for the second round 
+      of interviews for the 2025 - 2026 Resident Assistant position. As discussed in the Information Session, 
+      this will be a practical interview. You and a partner will be given tasks relevant to the RA role to 
+      complete and present. This is not a competition by any means; each applicant has unique skills and 
+      areas of growth. Be yourself, and you'll do great!
+    </p>
+    <p>
+      When signing up, please pick a time slot when you are available and prioritize signing up with a partner 
+      who is not a peer. We will know! If you do not have a partner to interview with, you will be provided with 
+      one who is a member of our current staff.
+    </p>
+    <p>
+      If you have any questions or scheduling conflicts, please reply to this email!
+    </p>
+  </div>
+  
+  <!-- Resident Assistant Position Denial -->
+  <div class="content-box">
+    <h3>Resident Assistant Position Denial</h3>
+    <p><strong>Subject:</strong> Resident Assistant Position Update</p>
+    <p><strong>Good Morning,</strong></p>
+    <p>
+      Thank you for your interest in the Resident Assistant (RA) position at Indiana Tech! We consider it an honor 
+      and privilege to consider your candidacy and genuinely appreciate the time, effort, and insights you provided 
+      throughout the interview process. We do not have an RA position to offer you now.
+    </p>
+    <p>
+      We reviewed materials for many candidates between new applicants and returning staff members, with 26 
+      available positions. Please know that changes happen; if any vacancies open, you may be called upon to 
+      become an alternate or serve as an RA.
+    </p>
+    <p>
+      Please consider other leadership opportunities at Indiana Tech. Although most leadership positions are 
+      volunteer, involvement can give positive involvement experience and ongoing connection to other students. 
+      We will continue to work toward making a living on campus at Tech an excellent experience for you and 
+      wish you all the best.
+    </p>
+  </div>
+  
+  <!-- Resident Assistant Position Offer -->
+  <div class="content-box">
+    <h3>Resident Assistant Position Offer</h3>
+    <p><strong>Subject:</strong> Resident Assistant Position Offer</p>
+    <p><strong>Good Morning,</strong></p>
+    <p>
+      Thank you for your interest in the Resident Assistant (RA) position at Indiana Tech! We consider it an honor 
+      and privilege to consider your candidacy and genuinely appreciate the time, effort, and insights you provided 
+      throughout the interview process. We are excited to offer you a position as RA for the upcoming year.
+    </p>
+    <p>
+      You have a packet at the Student Affairs front desk waiting for you. This contains information for next year 
+      as an RA. Please pick up, complete, and return this packet no later than March 23rd at 12:00 PM. Feel more 
+      than welcome to contact Drennan with questions if necessary. Following Spring Break, if you accept 
+      the position, be on the lookout to schedule a short meeting with Drennan.
+    </p>
+    <p>
+      Congratulations on this opportunity. We are incredibly excited to have you on board and look forward to 
+      launching a new year in Residence Life!
+    </p>
+  </div>
+  
+  <!-- Resident Assistant Alternate Position Offer -->
+  <div class="content-box">
+    <h3>Resident Assistant Alternate Position Offer</h3>
+    <p><strong>Subject:</strong> Resident Assistant Alternate Position Offer</p>
+    <p><strong>Good Morning,</strong></p>
+    <p>
+      Thank you for your interest in the Resident Assistant (RA) position at Indiana Tech! We consider it an honor 
+      and privilege to consider your candidacy and genuinely appreciate the time, effort, and insights you provided 
+      throughout the interview process. We do not have an RA position to offer you and want you to serve as an 
+      alternate RA.
+    </p>
+    <p>
+      We reviewed materials for many candidates between new applicants and returning staff members, with 26 
+      available positions. Changes happen to our teams, and if vacancies open, you may be called upon to serve as 
+      an RA. Alternate RAs serve on our current team and many of the previous teams.
+    </p>
+    <p>
+      If you would like to serve as an alternate RA, please reply to 
+      <a href="mailto:residencelife@indianatech.edu">residencelife@indianatech.edu</a> by March 23, indicating whether 
+      you wish to remain as an alternate. We will keep you informed of any changes to your status and training 
+      opportunities that might be helpful should you be pulled to fill an opening.
+    </p>
+    <p>
+      Please consider other leadership opportunities at Indiana Tech. Although most leadership positions are 
+      volunteer, involvement can give positive involvement experience and ongoing connection to other students. 
+      We will continue to work toward making a living on campus at Tech an excellent experience for you and wish 
+      you all the best.
+    </p>
+  </div>
+  
+  <!-- Returning Resident Assistant -->
+  <div class="content-box">
+    <h3>Returning Resident Assistant Position Offer</h3>
+    <p><strong>Subject:</strong> Resident Assistant Position Offer</p>
+    <p><strong>Good Morning,</strong></p>
+    <p>
+      Thank you for your interest in the Resident Assistant (RA) position at Indiana Tech! We consider it an honor 
+      and privilege to consider your candidacy and genuinely appreciate the time, effort, and insights you provided 
+      throughout the interview process. We are excited to offer you a position as RA for the upcoming year.
+    </p>
+    <p>
+      We will discuss your placement location and other essential details in your next 1:1 with Drennan. Please 
+      notify Drennan of your offer acceptance/denial by March 23 at 12:00 PM. Feel free to reach out if you need 
+      extra time or anything else.
+    </p>
+    <p>
+      Congratulations on this opportunity. We are incredibly excited to have you on board and look forward to 
+      launching a new year in Residence Life!
+    </p>
+  </div>
+</div>
+
+<!-- Community Engagement Section -->
+<div class="section-wrapper" id="community-engagement">
+  <h2>Community Engagement</h2>
+  <div class="content-box">
+    <p>
+      Engaging a large population of students, many of whom are actively involved in collegiate athletics and 
+      frequently prefer scrolling through social media after a long day, presents unique challenges in fostering engagement. 
+      Resident Assistants were responsible for event conceptualization, planning, proposal, and production. As Coordinator, 
+      I took responsibility for event approval and budget allocation, while also providing an extra marketing push when 
+      traditional flyers were not enough. To meet this need, I implemented additional strategies including dynamic social media 
+      video content, creatively designed flyers, and targeted email marketing.
+    </p>
+    
+    <!-- Clickable Image at the End -->
+    <p style="text-align: center; margin-top: 1.5rem;">
+      <a href="https://i.ibb.co/KzjCCSkB/T-Shirt-Crossword.png" target="_blank" style="display: inline-block;">
+        <img 
+          src="https://i.ibb.co/KzjCCSkB/T-Shirt-Crossword.png" 
+          alt="T-Shirt-Crossword" 
+          style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;"
+        >
+      </a>
+    </p>
+  </div>
+</div>
+
+
+<!-- Super Bowl Watch Party Section -->
+<div class="section-wrapper" id="super-bowl">
+  <h2>Super Bowl Watch Party!</h2>
+  <div class="content-box">
+    <p><strong>Subject:</strong> TAYLOR SWIFT IS IN THE REC CENTER!</p>
+    <p><em>Really? Kinda...</em></p>
+    
+    <p>
+      Tonight at 6:00 PM, The Offices of Residence Life and Student Engagement will host their 
+      annual Super Bowl Party in the Rec Center!
+    </p>
+    <p>
+      We have four TVs and the Rec Center sound system is ready to go, so you don't miss any 
+      of the action or the next viral commercial.
+    </p>
+    <p>Now, we're sure you're wondering...</p>
+    
+    <p><strong>WHAT'S IN IT FOR YOU?</strong></p>
+    <ul>
+      <li>
+        <strong>Food, lots of it.</strong> Do you like chicken wings, mozzarella sticks, pizza, 
+        chips and dip, meatballs, and more? If yes, you should be excited.
+      </li>
+      <li>
+        <strong>Activities, plenty of them.</strong> If you're invested in the Super Bowl 
+        (financially or emotionally), then you'll love Bingo and Squares.
+      </li>
+      <li>
+        <strong>Prizes, too many of them.</strong> Always wanted to hop on the Stanley trend 
+        but couldn't justify the cost of a glorified water bottle? We've got 'em!
+      </li>
+      <li>
+        <strong>Open Bowling and Rec Center!</strong> If the game is a blowout, or you don't 
+        care about football, there is still plenty to do!
+      </li>
+      <li>
+        <strong>Root Beer Floats?</strong> Yes, root beer floats, 'cause why not?
+      </li>
+    </ul>
+    
+    <p>
+      If you're looking for a good time tonight, this is the place to be, and you won't want to miss out.
+    </p>
+<p><strong>Here's your ticket!</strong></p>
+<p style="text-align: center;">
+  <a href="https://i.ibb.co/fYDHzdK6/Super-Bowl-Event-Ticket-2025-Upright.png" target="_blank">
+    <img 
+      src="https://i.ibb.co/fYDHzdK6/Super-Bowl-Event-Ticket-2025-Upright.png" 
+      alt="Super Bowl Event Ticket 2025 Upright" 
+      style="max-width: 300px; height: auto; border: 1px solid #ddd; border-radius: 4px;"
+    >
+  </a>
+</p>
+<p>
+      Need to wrap up homework? Don't worry, the game doesn't start until 6:30 PM!
+    </p>
+    
+    <p>See you at 6:00 PM,<br>Drennan Sorrell</p>
+  </div>
+</div>
+
+<!-- Crush Hunger Dorm Competition Section -->
+<div class="section-wrapper" id="crush-hunger">
+  <h2>Crush Hunger Dorm Competition</h2>
+  <div class="content-box">
+    <p><strong>Subject:</strong> Is Troder Hall the Best Dorm on Campus? Probably Not...</p>
+    
+    <p><strong>Hello Troder Hall Warriors!</strong></p>
+    
+    <p>
+      <em>Do you really think you are the best dorm on campus?</em><br>
+</p>
+      From <strong>October 28 to November 8</strong>, Indiana Tech's <strong>#UCanCrushHunger</strong> campaign begins, and this 
+      year, we're going all in with a <em>dorm vs. dorm</em> competition. Whichever building scores the most points 
+      by placing cans in the Andorfer Commons donation bins or by donating online will win!
+    </p>
+    
+    <p>
+      The winning building will claim a <strong>HUGE trophy</strong> to display in the lobby and hold bragging rights!<br>
+      President Einolf also plans to host a building-wide <strong>Pizza Party</strong> for the winning dorm.<br>
+      Right now, Troder Hall is in the lead!
+    </p>
+    
+    <p>
+      This competition aims to fight hunger in northeast Indiana, supporting food-insecure families and college 
+      students across the region. Our goal is to help Community Harvest collect <strong>130,000 pounds of food</strong> 
+      that will provide meals to families in need during the holidays.
+    </p>
+    
+    <p><strong>How You Can Participate:</strong></p>
+    <ul>
+      <li>
+        <strong>Online Donation:</strong> 
+        <a href="https://www.paypal.com/donate?hosted_button_id=QPGBGL6TVPCKE" target="_blank">
+          https://www.paypal.com/donate?hosted_button_id=QPGBGL6TVPCKE
+        </a><br>
+        <em>(Every dollar donated online equals four pounds of food.)</em>
+      </li>
+      <li>
+        <strong>Campus Donation:</strong> Drop off food cans in bins located in the Cafe at Andorfer Commons!
+      </li>
+      <li>
+        <strong>Spread the Word:</strong> You can share the campaign on social media using 
+        <strong>#UCanCrushHunger</strong> and encourage your friends, family, roommates, and dorm neighbors to 
+        support Indiana Tech!
+      </li>
+    </ul>
+    
+    <p>Thank you for your support,<br>Drennan Sorrell</p>
+  </div>
+</div>
+
+<!-- The Pierson Spooktacular Section -->
+<div class="section-wrapper" id="pierson-spooktacular">
+  <h2>The Pierson Spooktacular!</h2>
+  <div class="content-box">
+    <p><strong>Subject:</strong> Boo! The Pierson Spooktacular is Back!</p>
+    
+    <p><strong>Hello Warriors,</strong></p>
+    
+    <p>
+      The night we've all been waiting for is finally here! The Pierson Spooktacular kicks off at 
+      <strong>8:00 PM sharp</strong> in the 1st-floor lobby of Pierson Hall.</p>
+
+Get ready for a night where ghosts, witches, and... some guy in a hotdog costume? Mingle over snacks and drinks. You'll be in charge of making sure pumpkins wear their Halloween best!
+    </p>
+    
+    <p>
+      Wear your best costumes and hit our  <span style="color: red; font-weight: bold;">RED CARPET</span>, where you could snag the title 
+      for the best look or funniest outfit of the night. Try your luck at guessing the candy corn count in our jar, or 
+      take the stage with some scary karaoke. You can also wrap up a friend in toilet paper for the 
+      mummy game, or wield a brush to paint your perfect pumpkin.
+    </p>
+    
+    <p>
+      It's all happening <strong>TONIGHT</strong>. No need to RSVP! Just bring your spooky spirit!
+    </p>
+    
+    <p>See you at 8,<br>Drennan Sorrell</p>
+
+   <!-- Clickable Image Added at the End -->
+    <div style="text-align: center; margin-top: 1rem;">
+      <a href="https://i.ibb.co/bfNTHJ3/Haunted-Pierson-Spooktacular.png" target="_blank">
+        <img src="https://i.ibb.co/bfNTHJ3/Haunted-Pierson-Spooktacular.png" alt="Haunted-Pierson-Spooktacular" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Troder Hall Community Kitchen Supplies Section -->
+<div class="section-wrapper" id="troder-kitchen-supplies">
+  <h2>Troder Hall Community Kitchen Supplies</h2>
+  <div class="content-box">
+    <p><strong>Subject:</strong> You Get A Pan! You Get A Pan! You Get A Pan!</p>
+    
+    <p><strong>Good Afternoon, Residents of Troder Hall,</strong></p>
+    
+    <p>
+      We are excited to inform you that beginning this evening, the first-floor kitchen will be fully 
+      stocked with pots, pans, utensils, and other essential supplies for cooking and cleaning! These 
+      supplies are able to be used by anyone at any time in the Troder Hall kitchen area.
+    </p>
+    
+    <p>
+      However, using these supplies does not come without responsibility. By using community kitchen 
+      supplies, you are responsible for the care and cleanliness of what you use, immediately following 
+      your need for their use. This means when you are leaving the kitchen area, the community supplies 
+      and the kitchen as a whole should be neat, tidy, clean, and put away (not soaking in the sink or 
+      drying on the counter).
+    </p>
+    
+    <p>
+      As residents of Troder Hall, everyone plays a part in maintaining the kitchen. Supplies like pots 
+      and pans will not be purchased again this academic year.
+    </p>
+    
+    <p>
+      <strong>Important!</strong> The community kitchen cabinets are used to store community kitchen supplies 
+      only. If your supplies, food, etc., are being stored in the kitchen cabinets, please remove them.
+    </p>
+    
+    <p>
+      Want to see what these supplies look like? Want to know how you can make sure you are leaving the 
+      kitchen up to standard? Join us tonight! Resident Assistants Lucca and Becca are hosting Pasta Night 
+      at 6:00 PM!
+    </p>
+    
+    <p>Thank You,<br>Drennan Sorrell</p>
+  </div>
+</div>
+
+
+<!-- Student Engagement Section -->
+<div class="section-wrapper" id="student-engagement">
+  <h2>Student Engagement</h2>
+  <div class="content-box">
+    <p>
+      Included are several projects and communications I oversaw as a Marketing Intern at the Indiana Tech Office of Student Engagement. 
+      My role focused on energizing campus events and developing innovative newsletter strategies that significantly boosted audience 
+      engagement and our overall brand image.
+    </p>
+    <!-- Department Logo for Student Engagement -->
+    <a href="https://i.ibb.co/wZxJkFVg/OSE-with-IT-logo.png" target="_blank">
+      <img src="https://i.ibb.co/wZxJkFVg/OSE-with-IT-logo.png" alt="Student Engagement Department Logo" class="centered-img">
+    </a>
+  </div>
+</div>
+
+<!-- The Toilet Paper Project -->
+<div class="section-wrapper" id="the-toilet-paper">
+  <h2>The Toilet Paper</h2>
+  <div class="content-box">
+    <p>
+      A monthly newsletter displayed in campus bathrooms, created using Canva and refined through event post-assessment trends. 
+      This initiative resulted in a substantial growth in audience engagement on platforms like Instagram.
+    </p>
+    <!-- Three images for The Toilet Paper, each clickable -->
+    <a href="https://i.ibb.co/TDjjZgXP/The-Toilet-Paper-Welcome-Week-2022.png" target="_blank">
+      <img src="https://i.ibb.co/TDjjZgXP/The-Toilet-Paper-Welcome-Week-2022.png" alt="The Toilet Paper - Welcome Week 2022" class="engagement-poster">
+    </a>
+    <a href="https://i.ibb.co/G3c5zW4J/THE-TOILET-PAPER-HALLOWEEN-EDITION.png" target="_blank">
+      <img src="https://i.ibb.co/G3c5zW4J/THE-TOILET-PAPER-HALLOWEEN-EDITION.png" alt="The Toilet Paper - Halloween Edition" class="engagement-poster">
+    </a>
+    <a href="https://i.ibb.co/qLwDZLwD/March-Toilet-Paper-2022.png" target="_blank">
+      <img src="https://i.ibb.co/qLwDZLwD/March-Toilet-Paper-2022.png" alt="March Toilet Paper 2022" class="engagement-poster">
+    </a>
+  </div>
+</div>
+
+<!-- Warrior Weekly Project -->
+<div class="section-wrapper" id="warrior-weekly">
+  <h2>Warrior Weekly</h2>
+  <div class="content-box">
+    <p>
+      A weekly newsletter distributed via print, email, and social media to keep the campus community informed and engaged. 
+      This project was essential twords maintaining high levels of student interaction and promoting campus spirit outside of "The Toilet Paper."
+    </p>
+    <!-- Three images for Warrior Weekly -->
+    <a href="https://i.ibb.co/qMfszLwF/The-Warrior-Weekly-April-4th.png" target="_blank">
+      <img src="https://i.ibb.co/qMfszLwF/The-Warrior-Weekly-April-4th.png" alt="The Warrior Weekly - April 4th" class="engagement-poster">
+    </a>
+    <a href="https://i.ibb.co/j9ywhzXh/Warrior-Weekly-418.png" target="_blank">
+      <img src="https://i.ibb.co/j9ywhzXh/Warrior-Weekly-418.png" alt="Warrior Weekly - 4/18" class="engagement-poster">
+    </a>
+    <a href="https://i.ibb.co/XxK7j2gC/Warrior-Weekly-Easter.png" target="_blank">
+      <img src="https://i.ibb.co/XxK7j2gC/Warrior-Weekly-Easter.png" alt="Warrior Weekly - Easter" class="engagement-poster">
+    </a>
+  </div>
+</div>
+
+<!-- Event: Gotcha Tag -->
+<div class="section-wrapper" id="gotcha-tag">
+  <h2>Event: Gotcha Tag</h2>
+  <div class="content-box">
+    <p>
+      Organized a campus-wide game of tag that lasted for one week, designed to foster community interaction and inject a sense of fun into Homecoming Week.
+    </p>
+    <!-- One image for Gotcha Tag -->
+    <a href="https://i.ibb.co/ycyQr1zx/Gotcha-Tag-Flyer-Draft-2022.png" target="_blank">
+      <img src="https://i.ibb.co/ycyQr1zx/Gotcha-Tag-Flyer-Draft-2022.png" alt="Gotcha Tag Flyer Draft 2022" class="engagement-poster">
+    </a>
+  </div>
+</div>
+
+<!-- Event: Sex Rules -->
+<div class="section-wrapper" id="sex-rules">
+  <h2>Event: Sex Rules</h2>
+  <div class="content-box">
+    <p>
+      In collaboration with the Athletic Director, I coordinated a mandatory sexual assault education event for athletic students by bringing in an engaging off-campus speaker and vendor. 
+      This event was critical to redirecting university culture during a time of need to raise awareness and promote a safe, inclusive campus environment.
+    </p>
+    <!-- One image for Sex Rules -->
+    <a href="https://i.ibb.co/8VtPyDz/Sex-Rules-Event.png" target="_blank">
+      <img src="https://i.ibb.co/8VtPyDz/Sex-Rules-Event.png" alt="Sex Rules Event" class="engagement-poster">
+    </a>
+  </div>
+</div>
+
+
+<!-- Festival Marketing Section -->
+<div class="section-wrapper" id="festival-marketing">
+  <h2>Keystone Colorado's Bacon and Bourbon Festival</h2>
+  <div class="content-box">
+    <p>
+      A comprehensive marketing plan I developed for The Keystone Neighbourhood Company for Keystone Colorado's Bacon and Bourbon Festival. As an event planner for a large, annual event for which ticket sales are falling behind last year's pace, my goal was to create a plan to incentivize guests to purchase tickets. 
+          </p>
+    
+    <!-- Dropdown #1: Marketing Plan Summary -->
+<details style="
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  padding: 1rem;
+">
+  <summary style="
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1rem;
+  ">
+    Summarized Marketing Plan
+  </summary>
+  
+  <div style="margin-top: 1rem; line-height: 1.5;">
+    <p><strong>I. Executive Summary</strong><br>
+      Ticket sales for the 2025 festival are behind last year's pace. To address this, we will focus on:
+    </p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Driving sales growth through a targeted marketing strategy leveraging digital and traditional media.</li>
+      <li>Using 2024 feedback to enhance the festival experience.</li>
+      <li>Creating urgency with early-bird promotions and VIP/family-friendly packages.</li>
+    </ul>
+    
+    <p><strong>II. 2024 Performance Analysis</strong><br>
+      Based on expected feedback from previous festivals, we will:
+    </p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Improve VIP and general admission value with clearer distinctions and better operational flow.</li>
+      <li>Offer early-bird pricing and family bundles to incentivize ticket purchases.</li>
+      <li>Engage residents with direct outreach (flyers, radio ads) and partnerships with local businesses.</li>
+    </ul>
+    
+    <p><strong>III. Marketing Goals</strong></p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Increase ticket sales by 20%.</li>
+      <li>Broaden audience reach through digital ads and traditional media.</li>
+      <li>Enhance attendee satisfaction by addressing feedback and improving the event experience.</li>
+    </ul>
+    
+    <p><strong>IV. Marketing Strategy</strong></p>
+    <!-- Outer list with no bullet style -->
+    <ul style="margin-left: 1.5rem; list-style-type: none;">
+      <li><strong>1. Digital Marketing:</strong></li>
+      <ul style="margin-left: 1.5rem; list-style-type: none;">
+        <li><strong>a.</strong> Facebook and Instagram Ads: Target key audience segments and use remarketing.</li>
+        <li><strong>b.</strong> Google Ads: Target consumers searching for summer events and festivals.</li>
+        <li><strong>c.</strong> YouTube Ads: Engage food lovers and families with pre-roll ads.</li>
+      </ul>
+      
+      <li style="margin-top: 0.8rem;"><strong>2. Traditional Media:</strong></li>
+      <ul style="margin-left: 1.5rem; list-style-type: none;">
+        <li><strong>a.</strong> Radio Ads on stations like KBCO.</li>
+        <li><strong>b.</strong> Print ads in Summit Daily News to engage regional readers and drive sales.</li>
+      </ul>
+      
+      <li style="margin-top: 0.8rem;"><strong>3. Grassroots Efforts:</strong></li>
+      <ul style="margin-left: 1.5rem; list-style-type: none;">
+        <li><strong>a.</strong> Distribute door hangers with QR codes offering exclusive local discounts.</li>
+        <li><strong>b.</strong> Partner with Keystone businesses for cross-promotions and event exposure.</li>
+      </ul>
+    </ul>
+    
+    <p><strong>V. Content Creation and Engagement</strong></p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Create teaser content highlighting vendors, VIP packages, and activities like Camp Bacon.</li>
+      <li>Use live social media content during the festival to boost real-time engagement.</li>
+      <li>Encourage user-generated content (UGC) for post-event promotion.</li>
+    </ul>
+    
+    <p><strong>VI. Operations and Customer Experience</strong></p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Continue to expand Camp Bacon for family-friendly activities.</li>
+      <li>Enhance the VIP experience with private tastings and seating.</li>
+      <li>Improve vendor visibility and streamline operations for better guest flow.</li>
+    </ul>
+    
+    <p><strong>IX. KPIs and Success Metrics</strong></p>
+    <ul style="margin-left: 1.5rem;">
+      <li><strong>Ticket Sales:</strong> Aim for a 20% increase over 2024.</li>
+      <li><strong>Digital Engagement:</strong> Monitor click-through rates and social media engagement.</li>
+      <li><strong>Attendee Satisfaction:</strong> Target a Net Promoter Score (NPS) of 80+.</li>
+      <li><strong>Vendor and Sponsor Feedback:</strong> Evaluate sales performance and brand visibility.</li>
+    </ul>
+  </div>
+</details>
+
+<details style="
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  padding: 1rem;
+">
+  <summary style="
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1rem;
+  ">
+    Full Marketing Plan
+  </summary>
+  
+  <div style="margin-top: 1rem; line-height: 1.5; max-height: 600px; overflow-y: auto;">
+    
+    <p><strong>I. Executive Summary</strong><br>
+      The Keystone Bacon and Bourbon Festival has the opportunity to become one of Colorado's signature summer festivals. However, with ticket sales falling behind last year's pace, we must create a powerful, targeted marketing strategy to incentivize ticket purchases and increase overall awareness for 2025's festival.
+    </p>
+    <p>
+      Our strategy will focus on:
+    </p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Driving ticket sales growth by refining our digital and traditional marketing efforts, leveraging strategic partnerships, and enhancing customer engagement.</li>
+      <li>Addressing feedback from past festivals to improve both the on-site experience and the effectiveness of our marketing efforts.</li>
+      <li>Creating urgency using early-bird promotions, targeted advertising, and clear messaging around VIP and family-friendly packages.</li>
+    </ul>
+    <p>
+      By focusing on these areas, we are confident in our ability to meet and exceed the festival's sales goals, engage a broader audience, and continue solidifying the festival's reputation as a premier destination for local, regional, and out-of-state attendees.
+    </p>
+    
+    <p><strong>II. 2024 Performance Analysis</strong><br>
+      As a result of our reduced ticket sales, we will need to rely on insights from our past festivals. Our useful review metrics will include feedback from attendees who bought and did not buy tickets, vendors, and internal assessments. While we don't have concrete 2024 data at this time, we can anticipate that guest feedback will highlight challenges typical of significant festivals of this scale.
+    </p>
+    <p style="margin-left: 1.5rem;"><strong>1. Expected Guest Insights</strong></p>
+    <ul style="margin-left: 2.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Festival guests who did not buy tickets may desire more value-driven ticketing options, like bundled deals for families or clearer distinctions between VIP and general admission experiences.</li>
+      <li><strong>b.</strong> Feedback-based responses may point to operational improvements, such as crowd flow management and accessibility to our featured events like the Bacon Eating Contest or VIP Bourbon Tour.</li>
+      <li><strong>c.</strong> Local attendee attendance might indicate a need for an increase in locally-focused advertising efforts, mostly through physical marketing and partnerships with nearby businesses.</li>
+    </ul>
+    <p style="margin-left: 1.5rem;"><strong>2. Adjustments for 2025</strong></p>
+    <ul style="margin-left: 2.5rem; list-style-type: none;">
+      <li><strong>a.</strong> To address expected price sensitivity, we will offer early-bird pricing opportunities communicated through our various media platforms to accompany the increased promotion of our VIP packages and Family Four-Pack bundles to communicate value and drive urgency in purchasing decisions.</li>
+      <li><strong>b.</strong> Our VIP attendees expect a seamless and premium experience. Based on our expected festival experience feedback, we must simplify vendor placements, enhance signage, and improve the festival's layout to provide a smoother guest experience.</li>
+      <li><strong>c.</strong> We will engage Keystone residents with more direct outreach (flyers, local radio ads) and cross-promotions with local businesses to promote a deeper connection between the festival and the community.</li>
+    </ul>
+    
+    <p><strong>III. Marketing Goals</strong><br>
+      We've established the following goals for 2025's festival to meet the expectations of our stakeholders:
+    </p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Increase ticket sales by 20% by boosting festival awareness and incentivizing early and family ticket purchases.</li>
+      <li>Broaden audience reach by using traditional media strategies to target regional markets like Denver and digital advertising tools to target out-of-state consumers driven by tourism.</li>
+      <li>Enhance attendee satisfaction by communicating and addressing our expected guest feedback while improving our festival logistics, vendor visibility, and family-friendly offerings.</li>
+      <li>Utilize local partnerships, grassroots promotions, and direct mail to Keystone's residents and businesses to increase community and volunteer engagement.</li>
+    </ul>
+    
+    <p><strong>IV. Marketing Strategy</strong><br>
+      Our marketing goals outline a significant initiative to set the standard for the Bacon and Bourbon Festival and all of Keystone's future festivals. Here's how we will execute our strategy:
+    </p>
+    
+    <!-- Sub-section: Digital Marketing -->
+    <p style="margin-left: 1.5rem;"><strong>1. Digital Marketing</strong></p>
+    <p style="margin-left: 2.5rem;">
+      Our digital marketing approach will be optimized to maximize potential customer reach and ticket sales:
+    </p>
+    <ul style="margin-left: 3.5rem; list-style-type: none;">
+      <li><strong>a. Meta Business Suite and Facebook Ads</strong><br>
+        i. We will run targeted campaigns based on key audience segments (families, food lovers, and music enthusiasts). Our ads will remarket to users who have visited the festival page but have not purchased tickets. Facebook Events Ads will also help promote awareness within our local and regional groups.</li>
+      <li style="margin-top: 0.8rem;"><strong>b. Google Ads and AI-Powered Campaigns</strong><br>
+        i. We'll create search campaigns optimized for keywords such as "the best Colorado food festivals," "family-friendly events in Colorado," and "bourbon tastings near Denver." We can automate adjustments for our target customers using Google's AI-powered ad features while optimizing ad spending and performance.</li>
+      <li style="margin-top: 0.8rem;"><strong>c. Instagram Reels and Stories</strong><br>
+        i. Visual content will be a significant player in our engagement strategies. We'll create Instagram Reels and Stories that showcase the behind-the-scenes preparation, vendor spotlights, and attendee testimonials from past festivals. Interactive polls and countdown stickers will help us build anticipation.</li>
+      <li style="margin-top: 0.8rem;"><strong>d. YouTube Pre-Roll Ads</strong><br>
+        i. Short, engaging videos will run as pre-roll ads targeting food enthusiasts, families, and festival-goers on YouTube. These ads will link directly to the ticket purchasing page and emphasize time-sensitive promotions like early bird pricing.</li>
+    </ul>
+    
+    <!-- Sub-section: Traditional Media -->
+    <p style="margin-left: 1.5rem; margin-top: 1rem;"><strong>2. Traditional Media</strong></p>
+    <p style="margin-left: 2.5rem;">
+      Our traditional media will guarantee we're engaging regional markets and nearby communities:
+    </p>
+    <ul style="margin-left: 3.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Through partnerships with popular local stations like KBCO and KRFX, we will run ads targeting high-traffic listening times to boost ticket sales. We will mostly focus on drive-time slots. Our messaging will highlight festival hype, exclusive deals, and codes for early purchases and group ticket packages.</li>
+      <li style="margin-top: 0.8rem;"><strong>b.</strong> Print ads in The Denver Post and Summit Daily News will target regional readers by showcasing upcoming festival highlights, family offerings, and VIP experiences.</li>
+    </ul>
+    
+    <!-- Sub-section: Community Engagement -->
+    <p style="margin-left: 1.5rem; margin-top: 1rem;"><strong>3. Community Engagement and Grassroots Marketing</strong></p>
+    <p style="margin-left: 2.5rem;">
+      Our local community involvement is essential to the success of Keystone Festivals. Here's how we'll foster engagement:
+    </p>
+    <ul style="margin-left: 3.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Distributing mail and door hangers throughout the Keystone community and surrounding areas with exclusive local discounts will drive interest from the community. The flyers will feature a QR code for easy ticket purchasing and highlight a festival schedule or events like Camp Bacon for families.</li>
+      <li style="margin-top: 0.8rem;"><strong>b.</strong> We'll create a "win-win," boosting ticket sales and local business engagement by collaborating with local businesses for cross-promotions and offering festival-goers discounts at restaurants or cafes if they show their festival tickets.</li>
+    </ul>
+    
+    <!-- Sub-section: Strategic Influencer Campaigns -->
+    <p style="margin-left: 2.5rem; margin-top: 1rem;">
+      <strong>4. Strategic Influencer Campaigns</strong><br>
+      a. While influencer marketing is not a primary driver of our marketing strategy, we will engage with local micro-influencers specializing in food, family activities, and Colorado events to promote the festival to their niche audiences. These collaborations will be low-cost and focus on organic posts in exchange for VIP tickets or festival passes.
+    </p>
+    
+    <p><strong>V. Content Creation and Management</strong></p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Starting early, we'll tease the lineup, feature bacon vendors, and show off exclusive bourbon tastings.</li>
+      <li>We'll create highlights or repost announcements for vendors, musicians, and sponsors to develop excitement.</li>
+      <li>On the festival days, we'll use Instagram Stories and Facebook Live to show the festival in action.</li>
+    </ul>
+    
+    <p><strong>VI. Festival Operations and Customer Experience</strong></p>
+    <ul style="margin-left: 1.5rem;">
+      <li>Camp Bacon must continue to expand and offer more engaging, kid-friendly activities.</li>
+      <li>The VIP Bourbon Tour must justify the higher ticket price with exclusive tastings and benefits.</li>
+      <li>We will simplify booth placement and improve signage for easier navigation.</li>
+    </ul>
+    
+    <p><strong>VII. Post-Festival Engagement and Feedback</strong></p>
+    <p style="margin-left: 1.5rem;"><strong>1. Post-Festival Surveys</strong></p>
+    <ul style="margin-left: 2.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Gathering feedback on ticket purchasing, on-site logistics, and favorite activities.</li>
+      <li><strong>b.</strong> Asking about satisfaction with ticket pricing, VIP/family packages, and improvements.</li>
+      <li><strong>c.</strong> Encouraging suggestions for vendor variety, entertainment lineup, or family-friendly features.</li>
+    </ul>
+    <p style="margin-left: 1.5rem;">
+      Each instance of feedback is valuable in refining future festivals.
+    </p>
+    <p style="margin-left: 1.5rem;"><strong>2. Vendor and Sponsor Feedback</strong></p>
+    <ul style="margin-left: 2.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Gauge vendor satisfaction with placement and foot traffic.</li>
+      <li><strong>b.</strong> Determine if sponsors felt they received sufficient exposure.</li>
+    </ul>
+    <p style="margin-left: 1.5rem;">
+      This helps refine booth positioning and sponsorship visibility.
+    </p>
+    <p style="margin-left: 1.5rem;"><strong>3. User-Generated Content (UGC) Campaigns</strong></p>
+    <ul style="margin-left: 2.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Encourage attendees to share photos/videos via #BaconAndBourbon2025; feature the best UGC post-event.</li>
+    </ul>
+    <p style="margin-left: 1.5rem;"><strong>4. Post-Festival Social Media Recap</strong></p>
+    <ul style="margin-left: 2.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Post highlights a few days later, showcasing behind-the-scenes, best UGC, and memorable moments.</li>
+    </ul>
+    
+    <p><strong>VIII. Budget Considerations</strong></p>
+    <ul style="margin-left: 1.5rem; list-style-type: none;">
+      <li><strong>1.</strong> Invest in digital advertising (Facebook, Instagram, Google Ads, YouTube) for audience targeting.</li>
+      <li><strong>2.</strong> Reserve funds for local radio ads (drive-time spots on KBCO, KRFX) and print ads in The Denver Post and Summit Daily News.</li>
+      <li><strong>3.</strong> Set aside a portion for third-party partnerships and content creation.</li>
+      <li><strong>4.</strong> Allocate funds to enhance the VIP package and improve signage.</li>
+      <li><strong>5.</strong> Keep a contingency fund for unforeseen expenses or last-minute pushes.</li>
+    </ul>
+    
+    <p><strong>IX. KPIs and Success Metrics</strong></p>
+    <p style="margin-left: 1.5rem;"><strong>Ticket Sales Metrics</strong></p>
+    <ul style="margin-left: 2.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Track total sales, aiming for a 20% increase over the previous year.</li>
+      <li><strong>b.</strong> Monitor digital ad conversions to optimize targeting and messaging.</li>
+    </ul>
+    <p style="margin-left: 1.5rem;"><strong>Digital Engagement</strong></p>
+    <ul style="margin-left: 2.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Measure click-through rates on Facebook, Instagram, Google Ads.</li>
+      <li><strong>b.</strong> Grow social media following and UGC.</li>
+    </ul>
+    <p style="margin-left: 1.5rem;"><strong>Attendee Feedback</strong></p>
+    <ul style="margin-left: 2.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Target NPS of 80+ in post-festival surveys.</li>
+      <li><strong>b.</strong> Focus on family and VIP ticket purchasers for repeat attendance.</li>
+    </ul>
+    <p style="margin-left: 1.5rem;"><strong>Sponsor and Vendor Satisfaction</strong></p>
+    <ul style="margin-left: 2.5rem; list-style-type: none;">
+      <li><strong>a.</strong> Measure vendor sales and foot traffic for improved management.</li>
+      <li><strong>b.</strong> Evaluate sponsor satisfaction with visibility and engagement.</li>
+    </ul>
+    
+    <p><strong>X. Conclusion</strong></p>
+    <p>
+      We are confident that the marketing plan for 2025's Keystone Bacon and Bourbon Festival will drive ticket sales, expand audience reach, and create an unforgettable festival experience that keeps attendees returning year after year. By focusing on data-driven marketing, community engagement, and operational excellence, we are thrilled to put on a festival that will meet its sales goals and deliver significant value to all our stakeholders (attendees, vendors, sponsors, and the Keystone community).
+    </p>
+    <p>
+      By utilizing the tools and strategies outlined in our festival marketing plan, we are confident in our ability to reach our target audiences and create a festival experience that resonates with food lovers, families, and bourbon enthusiasts.
+    </p>
+    <p>
+      With your support, we look forward to contributing to the growth and success of the Bacon and Bourbon Festival and Keystone's community.
+    </p>
+  </div>
+</details>
+
+
+    
+    <!-- Campaign Posters / Flyers -->
+    <p style="text-align: center; margin-top: 1.5rem; font-weight: bold;">Campaign Posters / Flyers</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 1rem;">
+      <a href="https://i.ibb.co/1YNpnByB/Keystone-Project-Ads-Final-1.png" target="_blank">
+        <img src="https://i.ibb.co/1YNpnByB/Keystone-Project-Ads-Final-1.png" alt="Keystone Project Ad Final 1" style="max-width: 600px; width: 100%; margin: 0.5rem;">
+      </a>
+      <a href="https://i.ibb.co/5XqmwxYc/Keystone-Project-Ads-Final-2.png" target="_blank">
+        <img src="https://i.ibb.co/5XqmwxYc/Keystone-Project-Ads-Final-2.png" alt="Keystone Project Ad Final 2" style="max-width: 600px; width: 100%; margin: 0.5rem;">
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Educational Material Section -->
+<div class="section-wrapper" id="educational-material">
+  <h2>Educational Material</h2>
+  <div class="content-box">
+    <p>
+      This section features material used during my Undergraduate and MBA programs, as well as educational content designed to enhance learning. It includes examples of coursework and resident education materials.
+    </p>
+    
+    <!-- Area: Course Work -->
+    <div id="course-work">
+      <h3>Course Work</h3>
+      <div style="display: flex; justify-content: space-between; gap: 1rem; flex-wrap: nowrap;">
+        <a href="https://i.ibb.co/m5S1RtM1/Fair-Labor-Standards-Act-Infographic.png" target="_blank">
+          <img src="https://i.ibb.co/m5S1RtM1/Fair-Labor-Standards-Act-Infographic.png" 
+               alt="Fair Labor Standards Act Infographic" 
+               style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+        </a>
+        <a href="https://i.ibb.co/tP2Kxg2C/Marketing-Research-Question-Infographic.png" target="_blank">
+          <img src="https://i.ibb.co/tP2Kxg2C/Marketing-Research-Question-Infographic.png" 
+               alt="Marketing Research Question Infographic" 
+               style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+        </a>
+        <a href="https://i.ibb.co/B5hJc867/BASF-Supply-Chain-Management.png" target="_blank">
+          <img src="https://i.ibb.co/B5hJc867/BASF-Supply-Chain-Management.png" 
+               alt="BASF Supply Chain Management" 
+               style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+        </a>
+      </div>
+    </div>
+    
+    <!-- Area: Resident Education -->
+<div id="resident-education" style="margin-top: 2rem;">
+  <h3>Resident Education</h3>
+  <div style="text-align: center;">
+    <a href="https://i.ibb.co/DHn8hqkh/winter-checkout-printable.png" target="_blank">
+      <img src="https://i.ibb.co/DHn8hqkh/winter-checkout-printable.png" 
+           alt="winter-checkout-printable" 
+           style="max-width: 600px; width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+    </a>
+  </div>
+</div>
+    
+  </div>
+</div>
+
+<!-- Gallery Section -->
+<div class="section-wrapper" id="gallery">
+  <h2>Gallery</h2>
+  <div class="content-box">
+    <p>
+      Explore various areas of my work! From personal portraits to videos, event photos, and more! 
+      Click any image or reel to view it at full size.
+    </p>
+
+    <!-- Me! Section -->
+    <h3 id="me" style="color: #D35400; margin-top: 1.5rem; border-bottom: 2px solid #D35400; padding-bottom: 0.3rem;">Me!</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+
+
+<!-- Existing Image #1 -->
+  <a href="https://i.ibb.co/Hf7H88L6/7C0A7821.jpg" target="_blank">
+    <img src="https://i.ibb.co/Hf7H88L6/7C0A7821.jpg" alt="7C0A7821" 
+         style="width: 100%; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+  </a>
+  <!-- Existing Image #2 -->
+  <a href="https://i.ibb.co/LzBfHFh7/7-C0-A7344-1.jpg" target="_blank">
+    <img src="https://i.ibb.co/LzBfHFh7/7-C0-A7344-1.jpg" alt="7-C0-A7344-1" 
+         style="width: 100%; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+  </a>
+  <!-- Existing Image #3 -->
+  <a href="https://i.ibb.co/TBtXDTFF/7C0A1133.jpg" target="_blank">
+    <img src="https://i.ibb.co/TBtXDTFF/7C0A1133.jpg" alt="7C0A1133" 
+         style="width: 100%; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+  </a>
+  <!-- Existing Image #4 -->
+  <a href="https://i.ibb.co/NdxRP8zC/Drennan-Sorrell552.jpg" target="_blank">
+    <img src="https://i.ibb.co/NdxRP8zC/Drennan-Sorrell552.jpg" alt="Drennan-Sorrell552" 
+         style="width: 100%; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+  </a>
+  <!-- New Image #1 -->
+  <a href="https://i.ibb.co/xKWQxDGR/2J0A2149.jpg" target="_blank">
+    <img src="https://i.ibb.co/xKWQxDGR/2J0A2149.jpg" alt="2J0A2149" 
+         style="width: 100%; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+  </a>
+  <!-- New Image #2 -->
+  <a href="https://i.ibb.co/Q0PvjGR/IMG-0619.jpg" target="_blank">
+    <img src="https://i.ibb.co/Q0PvjGR/IMG-0619.jpg" alt="IMG-0619" 
+         style="width: 100%; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+  </a>
+</div>
+
+
+    <!-- Videos (from Instagram) Section -->
+    <h3 id="videos" style="color: #D35400; margin-top: 1.5rem; border-bottom: 2px solid #D35400; padding-bottom: 0.3rem;">Videos</h3>
+    <p>Check out my latest Instagram Reels:</p>
+    <div class="video-grid" 
+         style="
+           display: grid; 
+           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+           gap: 1rem; 
+           justify-items: center;
+         "
+    >
+      <!-- Video #1 -->
+      <div style="max-width: 320px; width: 100%;">
+        <blockquote 
+          class="instagram-media" 
+          data-instgrm-captioned 
+          data-instgrm-permalink="https://www.instagram.com/reel/DF3KmiYPVlZ/?utm_source=ig_embed&amp;utm_campaign=loading" 
+          data-instgrm-version="14"
+          style="
+            background:#FFF; 
+            border:0; 
+            border-radius:3px; 
+            box-shadow:0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15); 
+            margin:1px; 
+            padding:0; 
+            width:100%;
+          "
+        ></blockquote>
+      </div>
+      
+      <!-- Video #2 -->
+      <div style="max-width: 320px; width: 100%;">
+        <blockquote 
+          class="instagram-media" 
+          data-instgrm-captioned 
+          data-instgrm-permalink="https://www.instagram.com/reel/DBq3ZdOARQV/?utm_source=ig_embed&amp;utm_campaign=loading" 
+          data-instgrm-version="14"
+          style="
+            background:#FFF; 
+            border:0; 
+            border-radius:3px; 
+            box-shadow:0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15); 
+            margin:1px; 
+            padding:0; 
+            width:100%;
+          "
+        ></blockquote>
+      </div>
+      
+      <!-- Video #3 -->
+      <div style="max-width: 320px; width: 100%;">
+        <blockquote 
+          class="instagram-media" 
+          data-instgrm-captioned 
+          data-instgrm-permalink="https://www.instagram.com/reel/DAeoyixgR-B/?utm_source=ig_embed&amp;utm_campaign=loading" 
+          data-instgrm-version="14"
+          style="
+            background:#FFF; 
+            border:0; 
+            border-radius:3px; 
+            box-shadow:0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15); 
+            margin:1px; 
+            padding:0; 
+            width:100%;
+          "
+        ></blockquote>
+      </div>
+      
+      <!-- Video #4 -->
+      <div style="max-width: 320px; width: 100%;">
+        <blockquote 
+          class="instagram-media" 
+          data-instgrm-captioned 
+          data-instgrm-permalink="https://www.instagram.com/reel/DBovtxRPp72/?utm_source=ig_embed&amp;utm_campaign=loading" 
+          data-instgrm-version="14"
+          style="
+            background:#FFF; 
+            border:0; 
+            border-radius:3px; 
+            box-shadow:0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15); 
+            margin:1px; 
+            padding:0; 
+            width:100%;
+          "
+        ></blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Instagram Embed Script (after all blockquotes) -->
+<script async src="https://www.instagram.com/embed.js"></script>
+   
+
+
+    <!-- Event Photos Section -->
+<div class="section-wrapper" id="event-photos">
+  <h3 style="color: #D35400; border-bottom: 2px solid #D35400; padding-bottom: 0.3rem;">Event Photos</h3>
+  
+  <!-- Dropdown #1: Bouquet Making -->
+  <details style="margin-top: 1rem;">
+    <summary style="font-weight: bold; cursor: pointer; font-size: 1rem; color: #D35400; margin-bottom: 0.5rem;">
+      Bouquet Making
+    </summary>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; justify-items: center; margin-top: 1rem;">
+      <a href="https://i.ibb.co/Gzc9TkX/DSC00269.jpg" target="_blank">
+        <img src="https://i.ibb.co/Gzc9TkX/DSC00269.jpg" alt="DSC00269" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+      <a href="https://i.ibb.co/JjRWYgwm/DSC00237.jpg" target="_blank">
+        <img src="https://i.ibb.co/JjRWYgwm/DSC00237.jpg" alt="DSC00237" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+      <a href="https://i.ibb.co/7d4w434h/DSC00250.jpg" target="_blank">
+        <img src="https://i.ibb.co/7d4w434h/DSC00250.jpg" alt="DSC00250" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+    </div>
+  </details>
+  
+  <!-- Dropdown #2: Super Bowl Watch Party -->
+  <details style="margin-top: 1rem;">
+    <summary style="font-weight: bold; cursor: pointer; font-size: 1rem; color: #D35400; margin-bottom: 0.5rem;">
+      Super Bowl Watch Party
+    </summary>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; justify-items: center; margin-top: 1rem;">
+      <a href="https://i.ibb.co/RGJgqvCH/DSC00208.jpg" target="_blank">
+        <img src="https://i.ibb.co/RGJgqvCH/DSC00208.jpg" alt="DSC00208" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+      <a href="https://i.ibb.co/d4j017xm/DSC00183.jpg" target="_blank">
+        <img src="https://i.ibb.co/d4j017xm/DSC00183.jpg" alt="DSC00183" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+      <a href="https://i.ibb.co/4gtNQwRL/DSC00171.jpg" target="_blank">
+        <img src="https://i.ibb.co/4gtNQwRL/DSC00171.jpg" alt="DSC00171" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+    </div>
+  </details>
+  
+  <!-- Dropdown #3: Ping Pong Tournament -->
+  <details style="margin-top: 1rem;">
+    <summary style="font-weight: bold; cursor: pointer; font-size: 1rem; color: #D35400; margin-bottom: 0.5rem;">
+      Ping Pong Tournament
+    </summary>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; justify-items: center; margin-top: 1rem;">
+      <a href="https://i.ibb.co/GfJgsMFf/DSC00085-Enhanced-NR.jpg" target="_blank">
+        <img src="https://i.ibb.co/GfJgsMFf/DSC00085-Enhanced-NR.jpg" alt="DSC00085-Enhanced-NR" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+      <a href="https://i.ibb.co/F18vhR8/DSC00083.jpg" target="_blank">
+        <img src="https://i.ibb.co/F18vhR8/DSC00083.jpg" alt="DSC00083" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+      <a href="https://i.ibb.co/ycHW3YDT/DSC00111.jpg" target="_blank">
+        <img src="https://i.ibb.co/ycHW3YDT/DSC00111.jpg" alt="DSC00111" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+    </div>
+  </details>
+  
+  <!-- Dropdown #4: F.I.R.E. -->
+  <details style="margin-top: 1rem;">
+    <summary style="font-weight: bold; cursor: pointer; font-size: 1rem; color: #D35400; margin-bottom: 0.5rem;">
+      F.I.R.E.
+    </summary>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; justify-items: center; margin-top: 1rem;">
+      <a href="https://i.ibb.co/ZpR5RgjD/DSC00043.jpg" target="_blank">
+        <img src="https://i.ibb.co/ZpR5RgjD/DSC00043.jpg" alt="DSC00043" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+      <a href="https://i.ibb.co/fdr8Fc87/DSC00048.jpg" target="_blank">
+        <img src="https://i.ibb.co/fdr8Fc87/DSC00048.jpg" alt="DSC00048" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+      <a href="https://i.ibb.co/9mHqcNzX/DSC00045.jpg" target="_blank">
+        <img src="https://i.ibb.co/9mHqcNzX/DSC00045.jpg" alt="DSC00045" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+    </div>
+  </details>
+  
+  <!-- Dropdown #5: Lemon Shake Up's -->
+  <details style="margin-top: 1rem;">
+    <summary style="font-weight: bold; cursor: pointer; font-size: 1rem; color: #D35400; margin-bottom: 0.5rem;">
+      Lemon Shake Up's
+    </summary>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; justify-items: center; margin-top: 1rem;">
+      <a href="https://i.ibb.co/pjzcJwnD/DSC00034.jpg" target="_blank">
+        <img src="https://i.ibb.co/pjzcJwnD/DSC00034.jpg" alt="DSC00034" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+      <a href="https://i.ibb.co/5xvbw4nD/DSC00056.jpg" target="_blank">
+        <img src="https://i.ibb.co/5xvbw4nD/DSC00056.jpg" alt="DSC00056" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+      <a href="https://i.ibb.co/Fkf6s09G/DSC00057.jpg" target="_blank">
+        <img src="https://i.ibb.co/Fkf6s09G/DSC00057.jpg" alt="DSC00057" style="width: 100%; max-width: 200px; height: 200px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+      </a>
+    </div>
+  </details>
+</div>  
+  
+
+  </main>
+  
+  <footer>
+    &copy; 2025 Drennan Sorrell
+  </footer>
+</body>
+</html>
